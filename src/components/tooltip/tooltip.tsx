@@ -1,4 +1,4 @@
-import { h, Component } from '@stencil/core';
+import { h, Component, State, Prop } from '@stencil/core';
 
 @Component({
   tag: 'uc-tooltip',
@@ -6,12 +6,25 @@ import { h, Component } from '@stencil/core';
   shadow: true,
 })
 export class ToolTip {
+  @State() showTooltipText = false;
+  @Prop() text: string;
+
+  onToggleTooltip() {
+    this.showTooltipText = !this.showTooltipText;
+  }
+
   render() {
-    return (
-      <p>
-        <slot />
-        <span id="question">?</span>
-      </p>
-    );
+    let tooltip = null;
+    if (this.showTooltipText) {
+      tooltip = <div id="tooltip-text">{this.text}</div>;
+    }
+
+    return [
+      <slot />,
+      <span id="question" onClick={this.onToggleTooltip.bind(this)}>
+        ?
+      </span>,
+      tooltip,
+    ];
   }
 }

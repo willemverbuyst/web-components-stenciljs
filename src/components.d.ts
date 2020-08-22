@@ -12,6 +12,7 @@ export namespace Components {
         "title": string;
     }
     interface UcTooltip {
+        "text": string;
     }
 }
 declare global {
@@ -38,6 +39,7 @@ declare namespace LocalJSX {
         "title"?: string;
     }
     interface UcTooltip {
+        "text"?: string;
     }
     interface IntrinsicElements {
         "uc-side-drawer": UcSideDrawer;
