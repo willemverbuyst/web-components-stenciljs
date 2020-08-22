@@ -9,6 +9,15 @@
     <script nomodule src="/build/web-components-stencil.js"></script>
   </head>
   <body>
-    <uc-side-drawer></uc-side-drawer>
+    <uc-side-drawer title="Main Menu"></uc-side-drawer>
+
+    <script>
+      setTimeout(() => {
+        const sideDrawer = document.querySelector('uc-side-drawer');
+        // sideDrawer.title = 'It Changed';
+        // sideDrawer.title = 'It Changed';
+        sideDrawer.setAttribute('Title', 'Changed via attribute!');
+      }, 2000);
+    </script>
   </body>
 </html>
