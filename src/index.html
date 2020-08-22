@@ -7,17 +7,40 @@
 
     <script type="module" src="/build/web-components-stencil.esm.js"></script>
     <script nomodule src="/build/web-components-stencil.js"></script>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      .side-nav ul {
+        list-style: none;
+      }
+
+      .side-nav li {
+        margin: 1rem 0;
+      }
+      .side-nav a {
+        text-decoration: none;
+        color: #000;
+      }
+    </style>
   </head>
   <body>
-    <uc-side-drawer title="Main Menu"></uc-side-drawer>
+    <uc-side-drawer title="Main Menu">
+      <nav class="side-nav">
+        <ul>
+          <li><a href="/">A link</a></li>
+          <li><a href="/">A second link</a></li>
+          <li><a href="/">A third link</a></li>
+        </ul>
+      </nav>
+    </uc-side-drawer>
 
-    <script>
+    <!-- <script>
       setTimeout(() => {
         const sideDrawer = document.querySelector('uc-side-drawer');
-        // sideDrawer.title = 'It Changed';
-        // sideDrawer.title = 'It Changed';
-        sideDrawer.setAttribute('Title', 'Changed via attribute!');
+        sideDrawer.title = 'It Changed';
+        // sideDrawer.setAttribute('Title', 'Changed via attribute!');
       }, 2000);
-    </script>
+    </script> -->
   </body>
 </html>
