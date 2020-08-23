@@ -40,12 +40,12 @@ export class StockPrice {
   }
 
   componentWillLoad() {
-    console.log('Component will load');
+    // console.log('Component will load');
     console.log(this.stockSymbol);
   }
 
   componentDidLoad() {
-    console.log('Component did load');
+    // console.log('Component did load');
     if (this.stockSymbol) {
       this.stockUserInput = this.stockSymbol;
       this.stockInputValid = true;
@@ -54,15 +54,15 @@ export class StockPrice {
   }
 
   componentWillUpdate() {
-    console.log('Component will upate');
+    // console.log('Component will upate');
   }
 
   componentDidUpdate() {
-    console.log('Component did upate');
+    // console.log('Component did upate');
   }
 
   componentDidUnload() {
-    console.log('Component did unload');
+    // console.log('Component did unload');
   }
 
   fetchStockPrice(stockSymbol: string) {
