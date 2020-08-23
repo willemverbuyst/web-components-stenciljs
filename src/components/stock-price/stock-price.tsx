@@ -8,7 +8,16 @@ import { h, Component } from '@stencil/core';
 export class StockPrice {
   onFetchStockPrice(event: Event) {
     event.preventDefault();
-    console.log('submitted');
+    fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=${process.env.API_KEY}`)
+      .then(res => {
+        return res.json();
+      })
+      .then(parsedRes => {
+        console.log(parsedRes);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
