@@ -1,4 +1,4 @@
-import { h, Component, State, Element, Prop, Watch } from '@stencil/core';
+import { h, Component, State, Element, Prop, Watch, Listen } from '@stencil/core';
 
 @Component({
   tag: 'uc-stock-price',
@@ -21,6 +21,7 @@ export class StockPrice {
   stockSymbolchanged(newValue: string, oldValue: string) {
     if (newValue !== oldValue) {
       this.stockUserInput = newValue;
+      this.stockInputValid = true;
       this.fetchStockPrice(newValue);
     }
   }
@@ -63,6 +64,13 @@ export class StockPrice {
 
   componentDidUnload() {
     // console.log('Component did unload');
+  }
+
+  @Listen('body:ucSymbolSelected')
+  onStockSymbolSelected(event: CustomEvent) {
+    if (event.detail && event.detail !== this.stockSymbol) {
+      this.stockSymbol = event.detail;
+    }
   }
 
   fetchStockPrice(stockSymbol: string) {
