@@ -7,45 +7,8 @@
 
     <script type="module" src="/build/web-components-stencil.esm.js"></script>
     <script nomodule src="/build/web-components-stencil.js"></script>
-    <style>
-      body {
-        font-family: sans-serif;
-      }
-      .side-nav ul {
-        list-style: none;
-      }
-
-      .side-nav li {
-        margin: 1rem 0;
-      }
-
-      .side-nav a {
-        text-decoration: none;
-        color: #000;
-      }
-    </style>
   </head>
   <body>
-    <button id="side-drawer-btn">Open Side Menu</button>
-    <uc-side-drawer title="Main Menu">
-      <nav class="side-nav">
-        <ul>
-          <li><a href="/">A link</a></li>
-          <li><a href="/">A second link</a></li>
-          <li><a href="/">A third link</a></li>
-        </ul>
-      </nav>
-    </uc-side-drawer>
-    <p>Let's test this awesome <uc-tooltip text="we've built this before, now it's better">Tootip +++</uc-tooltip></p>
-
-    <script>
-      const sideDrawerButton = document.querySelector('#side-drawer-btn');
-      const sideDrawer = document.querySelector('uc-side-drawer');
-      sideDrawerButton.addEventListener('click', () => {
-        if (!sideDrawer.open) {
-          sideDrawer.openSideDrawer();
-        }
-      });
-    </script>
+    <uc-stock-price></uc-stock-price>
   </body>
 </html>
