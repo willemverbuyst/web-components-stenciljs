@@ -1,4 +1,4 @@
-import { h, Component, State, Element } from '@stencil/core';
+import { h, Component, State, Element, Prop } from '@stencil/core';
 
 @Component({
   tag: 'uc-stock-price',
@@ -13,6 +13,8 @@ export class StockPrice {
   @State() stockInputValid = false;
   @State() error: string;
 
+  @Prop() stockSymbol: string;
+
   onUserInput(event: Event) {
     this.stockUserInput = (event.target as HTMLInputElement).value;
     if (this.stockUserInput.trim() !== '') {
@@ -23,10 +25,36 @@ export class StockPrice {
   }
 
   onFetchStockPrice(event: Event) {
-    // const stockSymbol = (this.el.shadowRoot.querySelector('#stock-symbol') as HTMLInputElement).value;
-    const stockSymbol = this.stockInput.value;
-
     event.preventDefault();
+    const stockSymbol = this.stockInput.value;
+    this.fetchStockPrice(stockSymbol);
+  }
+
+  componentWillLoad() {
+    console.log('Component will load');
+    console.log(this.stockSymbol);
+  }
+
+  componentDidLoad() {
+    console.log('Component did load');
+    if (this.stockSymbol) {
+      this.fetchStockPrice(this.stockSymbol);
+    }
+  }
+
+  componentWillUpdate() {
+    console.log('Component will upate');
+  }
+
+  componentDidUpdate() {
+    console.log('Component did upate');
+  }
+
+  componentDidUnload() {
+    console.log('Component did unload');
+  }
+
+  fetchStockPrice(stockSymbol: string) {
     fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockSymbol}&apikey=${process.env.API_KEY}`)
       .then(res => {
         return res.json();
