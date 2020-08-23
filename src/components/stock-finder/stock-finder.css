@@ -42,3 +42,22 @@ form button[disabled] {
   color: white;
   cursor: not-allowed;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 0.25rem 0rem;
+  padding: 0.25rem;
+  border: 1px solid #ccc;
+}
+
+li:hover,
+li:active {
+  background-color: purple;
+  cursor: pointer;
+  color: #fff;
+}
